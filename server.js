@@ -3,13 +3,15 @@ const mongoose = require("mongoose");
 const path = require("path");
 
 const app = express();
-const PORT = 3000;
 
-// Middleware (form data read karne ke liye)
+// ✅ Render compatible port
+const PORT = process.env.PORT || 3000;
+
+// Middleware
 app.use(express.urlencoded({ extended: true }));
 
 // ===== MongoDB Connection =====
-mongoose.connect("mongodb+srv://anindya_420:Ishu%40125@cluster0.tqmgrvy.mongodb.net/loginApp?retryWrites=true&w=majority")
+mongoose.connect(process.env.MONGO_URI)
 .then(() => console.log("MongoDB Atlas Connected"))
 .catch(err => console.log("Mongo Error:", err));
 
@@ -21,7 +23,7 @@ const userSchema = new mongoose.Schema({
 
 const User = mongoose.model("User", userSchema);
 
-// ===== Home Route (Login Page) =====
+// ===== Home Route =====
 app.get("/", (req, res) => {
     res.sendFile(path.join(__dirname, "login.html"));
 });
@@ -35,11 +37,7 @@ app.post("/login", async (req, res) => {
             return res.send("Please fill all fields");
         }
 
-        const newUser = new User({
-            username,
-            password
-        });
-
+        const newUser = new User({ username, password });
         await newUser.save();
 
         console.log("Saved:", username);
@@ -52,7 +50,7 @@ app.post("/login", async (req, res) => {
     }
 });
 
-// ===== Server Start =====
-app.listen(PORT, "127.0.0.1", () => {
-    console.log(`Server running at http://127.0.0.1:${PORT}`);
+// ✅ IMPORTANT: 127.0.0.1 remove kar diya
+app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
 });
