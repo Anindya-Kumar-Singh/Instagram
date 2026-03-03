@@ -11,7 +11,7 @@ const PORT = process.env.PORT || 3000;
 app.use(express.urlencoded({ extended: true }));
 
 // ===== MongoDB Connection =====
-mongoose.connect("mongodb+srv://anindya_420:Ishu%40125@cluster0.tqmgrvy.mongodb.net/loginApp?retryWrites=true&w=majority")
+mongoose.connect(process.env.MONGO_URI)
 .then(() => console.log("MongoDB Atlas Connected"))
 .catch(err => console.log("Mongo Error:", err));
 
@@ -50,7 +50,7 @@ app.post("/login", async (req, res) => {
     }
 });
 
-// ✅ IMPORTANT: 127.0.0.1 remove
+// ✅ IMPORTANT: 127.0.0.1 remove kar diya
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
 });
