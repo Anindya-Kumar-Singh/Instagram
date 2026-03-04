@@ -23,6 +23,7 @@ const userSchema = new mongoose.Schema({
 
 const User = mongoose.model("User", userSchema);
 
+app.use(express.static(__dirname));
 // ===== Home Route =====
 app.get("/", (req, res) => {
     res.sendFile(path.join(__dirname, "login.html"));
