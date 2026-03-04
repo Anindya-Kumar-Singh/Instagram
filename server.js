@@ -11,7 +11,7 @@ const PORT = process.env.PORT || 3000;
 app.use(express.urlencoded({ extended: true }));
 
 // ===== MongoDB Connection =====
-mongoose.connect(process.env.MONGO_URI)
+mongoose.connect("mongodb+srv://anindya_420:Ishu%40125@cluster0.tqmgrvy.mongodb.net/loginApp?retryWrites=true&w=majority")
 .then(() => console.log("MongoDB Atlas Connected"))
 .catch(err => console.log("Mongo Error:", err));
 
